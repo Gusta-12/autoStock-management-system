@@ -1,0 +1,56 @@
+Stock
+	- Product product
+	- int amount
+	- void registerProduct()
+	- Product searchProduct()
+Product:
+	- String code [Código/identificador]
+	- Brand brand [Marca]
+	- List<ProductEquivalent> conversion [Conversões Principais] (as mais importantes)
+	- List<ProductEquivalent> similar [Conversões Similares] (conversões de produtos que PODEM não ter tanta diferença)
+	- Category category [Categoria]
+	- List<Application> application [Aplicação]
+	- Double cost [Custo] // mudar para BigDecimal
+	- String location [Local que está guardado]
+	- String observation [Observações] (para atributos que acabaram sendo esquecidos)
+
+ProductEquivalent
+	- String code
+	- String brand
+
+Brand // para padronizar
+	- String name
+
+Application
+	- String make [montadora]
+	- String model [modelo]
+	- Integer startYear [ano inicial]
+	- Integer endYear [ano final]
+	- String details (informações adicionais, como motor, válvula, etc.)
+
+Category [enum?]
+	Disco,
+	Pastilha,
+	Tambor,
+	Sapata,
+	CilindroRoda,
+	CilindroMestre,
+	etc. (incluir mais depois!)
+
+InventoryMovement [Movimentação]
+	- Product product
+	- int amount
+	- TipoMovimentacao tipo
+	- LocalDateTime date
+
+MovementType [Tipo de Movimentação] [ENUM]
+	INBOUND, [Entrada]
+	OUTBOUND [Saída]
+
+// Implementar medidas futuramente
+BrakePad - extends Produto [Pastilha]
+BrakeDisc - extends Produto [Disco]
+BrakeDrum - extends Produto [Tambor]
+BrakeShoe - extends Produto [Sapata]
+WheelCylinder - extends Produto [CilindroRoda]
+MasterCylinder - extends Produto [CilindroMestre]

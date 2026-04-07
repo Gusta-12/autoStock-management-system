@@ -1,0 +1,42 @@
+Definição - Um sistema de estoque para melhorar a organização em uma loja de auto peças, mantendo registros do estado atual do estoque e movimentações (saídas e entradas).
+
+Requisitos Funcionais:
+	- Cadastrar produtos
+	- Atualizar estoque
+	- Registrar compras e vendas
+	- Informar peças em falta no estoque (e 'marcar para pedir')
+	- Consultar produtos
+	- Padronizar informações de clientes e distribuidoras
+Não funcionais:
+	- Fácil de usar (intuitivo)
+	- Rápido
+	- Seguro (sistemas de validações)
+
+Público alvo - Qualquer funcionário da loja
+
+Entidades (de forma mais resumida):
+	- Produtos
+		- Categoria (Pastilhas, Discos, Cilindros, Fluídos, etc.)
+		- Código
+		- Marca
+		- Aplicação
+		- Status (Pedir/Não pedir)
+		- Detalhes (opcional, um campo com observações sobre algum detalhe do produto)
+	- Clientes
+		- Oficina ou Pessoa
+	- Distribuidoras
+		- Nome
+		- CNPJ
+		- Vendedor (que nos atende)
+		- Tipos de produtos (Fluídos, Discos, Pastilhas, etc.) (Que possuem o melhor preço)
+
+Casos de uso:
+	- Cadastrar produto, cliente e distribuidora
+	- Consultar produto, cliente e distribuidora
+		- Produtos: consultar por código, marca, conversões, aplicações, etc.
+		- Clietes: consultar por nome, CNPJ, endereço, etc.
+		- Distribuidora: consultar por nome, CNPJ, endereço, vendedor, etc.
+	- Editar produtos, clientes e distribuidoras cadastrados
+	- Registrar compras e vendas
+
+OBS: definir uma ordem de implementação, implementar tudo de uma vez pode ser bem mais trabalhoso
