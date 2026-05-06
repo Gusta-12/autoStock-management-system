@@ -1,14 +1,35 @@
-- Produtos
-    - Categoria (Pastilhas, Discos, Cilindros, Fluídos, etc.)
-    - Código
-    - Marca
-    - Aplicação
-    - Status (Pedir/Não pedir)
-    - Detalhes (opcional, um campo com observações sobre algum detalhe do produto)
-- Clientes
-    - Oficina ou Pessoa
-- Distribuidoras
-    - Nome
-    - CNPJ
-    - Vendedor (que nos atende)
-    - Tipos de produtos (Fluídos, Discos, Pastilhas, etc.) (Que possuem o melhor preço)
+1º produto geral, servir tanto para auto peças quanto óleos de freio, car 80, WD, vaselina, etc. (qualquer produto que possa ter na loja).
+    - Esse vai ser o principal, aquele que será visível enquanto está buscando o produto (como um cabeçalho), e será usado como base para fazer os registros de compras e vendas.
+        - Lembrete: planejar melhor a exibição depois
+2º produtos específicos, detalhes de aplicações, conversões, etc.
+    - Esse vai ser para quando estiver visualizando um produto específico, usado mais para localiza-lo, como uma forma de organização e especificação.
+
+Estoque
+    - produto -> Produto
+    - quantidadeDisponivel -> Integer
+    - status (Pedir/Não pedir) -> Status (Enum)
+    - observacoes[] -> String
+
+Produto (abstract?)
+    - categoria -> Categoria (Enum)
+        (Pastilha, Disco, Cilindro, etc.)
+    - código -> String
+    - marca -> String (Enum)
+    - aplicacoes[] -> Aplicacao
+    - detalhes[] -> String
+        (opcional, um campo com observações sobre algum detalhe do produto)
+
+Pastilhas (É UM produto)
+    - conversoes[] -> Conversao
+    - material - inicialmente, podem ser null
+    - comprimento - inicialmente, podem ser null
+    - altura - inicialmente, podem ser null
+    - espessura - inicialmente, podem ser null
+
+Conversao -> lembrar de resolver problema de associação no BD
+    - codigo - String
+    - marca - String
+    - similares[] - Conversao
+    - observacoes[] - String
+
+TERMINAR!

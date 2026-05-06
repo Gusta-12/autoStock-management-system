@@ -1,4 +1,4 @@
-LEMBRETE: refazer depois, focar na visão geral do sistea primeiro!
+LEMBRETE: refazer depois, focar na visão geral do sistema primeiro!
 
 Stock
 	- Product product

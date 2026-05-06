@@ -11,4 +11,3 @@ Melhorias futuras, para se ter em mente:
 	- um sistema de "peças para pedir", como uma forma de melhorar a organização de compras.
 		- destacar peças que estão em baixa no estoque
 		- definir peças que "não se deve pedir", junto de um motivo
-

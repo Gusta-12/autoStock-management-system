@@ -1,7 +1,5 @@
-- Cadastrar produto, cliente e distribuidora
-- Consultar produto, cliente e distribuidora
-    - Produtos: consultar por código, marca, conversões, aplicações, etc.
-    - Clietes: consultar por nome, CNPJ, endereço, etc.
-    - Distribuidora: consultar por nome, CNPJ, endereço, vendedor, etc.
-- Editar produtos, clientes e distribuidoras cadastrados
-- Registrar compras e vendas
+- Cadastrar produto
+- Consultar produto
+    - consultar por código, marca e conversões (mais opções futuramente)
+- Editar produtos
+- Registrar compras e vendas (semelhantes, detalhar mais depois)

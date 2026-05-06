@@ -1,0 +1,10 @@
+06/05/26
+    - "Usar enums para padronizar o atributo 'marca' da classe Produto"
+        - Ideia inicial: usar uma Enum universal para guardar todas as marcas dos produtos, armazenando:
+            - Para discos: Hipper Freios, Fremax, MDS, TRW
+            - Para pastilhas: Ecopads, Cobreq, Syl, Fras-le, +
+            - Para Cilindros de Roda: Fortec, TRW, Controil, Katho
+        - Problema: pelo conhecimento que eu tenho hoje sobre enums, haveria a possibilidade do usuário cadastrar uma pastilha com a marca "Hipper Freios", oque estaria errado, já que, atualmente, a loja de auto peças não possui pastilhas essa marca, e sim discos de freio.
+        - Caminho para solução:
+            - estudar mais sobre enums
+            - definir melhor as associações na hora da modelagem do banco de dados e diagrama de classe
