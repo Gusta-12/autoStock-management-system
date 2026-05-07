@@ -7,29 +7,71 @@
 Estoque
     - produto -> Produto
     - quantidadeDisponivel -> Integer
-    - status (Pedir/Não pedir) -> Status (Enum)
-    - observacoes[] -> String
+    - status (Pedir/Não pedir) -> Status
+    - observacoes<> -> String
 
-Produto (abstract?)
-    - categoria -> Categoria (Enum)
+Produto (abstract)
+    - categoria -> Categoria
         (Pastilha, Disco, Cilindro, etc.)
     - código -> String
-    - marca -> String (Enum)
-    - aplicacoes[] -> Aplicacao
-    - detalhes[] -> String
-        (opcional, um campo com observações sobre algum detalhe do produto)
+    - marca -> Marca
+    - detalhes<> -> String
+        - (opcional, um campo com observações sobre algum detalhe do produto)
 
-Pastilhas (É UM produto)
-    - conversoes[] -> Conversao
+Pastilha (É UM produto)
+    - conversoes<> -> Conversao
     - material - inicialmente, podem ser null
     - comprimento - inicialmente, podem ser null
     - altura - inicialmente, podem ser null
     - espessura - inicialmente, podem ser null
 
+Disco (É UM produto)
+
+Marca [Enum]
+    - ECOPADS
+    - FRASLE
+    - COBREQ
+    - BLUE_FRICTION
+    - HIPPER_FREIOS
+    - FREMAX
+    - MAZZICAR
+    - FORTEC
+    - + 
+
+Categoria [Enum]
+    - DISCO
+    - PASTILHA
+    - TAMBOR
+    - SAPATA
+    - CILINDRO_RODA
+    - CILINDRO_MESTRE
+    - +
+
 Conversao -> lembrar de resolver problema de associação no BD
     - codigo - String
     - marca - String
-    - similares[] - Conversao
-    - observacoes[] - String
+    - aplicacoes<> -> Aplicacao
+    - similares<> - Conversao
+    - observacoes<> - String
 
-TERMINAR!
+Aplicacao
+    - montadora - String
+        - Ex: Honda
+    - veículo - String
+        - Ex: Civic
+    - ano[2] - Integer
+        - Ex: [0] 1990; [1] 1992
+        - [0] -> ano inicial
+        - [1] -> ano final (definir um padrão para quando for '<ano inicial> em diante')
+            - usar null?
+        - considerar esse modelo (vetor) ou usar atributos separadas
+        - (ou Date? Apenas o ano!)
+        - [ver nome melhor]
+    - detalhes - String
+        - Ex: 1.6i 16V VTEC
+        - Definir padrão
+        - Considerar atributo 'motor'
+
+Status [Enum] - ver mais afundo as possibilidades com Enum
+    - PEDIR
+    - NAO_PEDIR
