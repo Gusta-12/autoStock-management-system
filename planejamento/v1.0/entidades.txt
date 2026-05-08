@@ -1,77 +1,97 @@
-1º produto geral, servir tanto para auto peças quanto óleos de freio, car 80, WD, vaselina, etc. (qualquer produto que possa ter na loja).
-    - Esse vai ser o principal, aquele que será visível enquanto está buscando o produto (como um cabeçalho), e será usado como base para fazer os registros de compras e vendas.
-        - Lembrete: planejar melhor a exibição depois
-2º produtos específicos, detalhes de aplicações, conversões, etc.
-    - Esse vai ser para quando estiver visualizando um produto específico, usado mais para localiza-lo, como uma forma de organização e especificação.
-
 Estoque
     - produto -> Produto
     - quantidadeDisponivel -> Integer
-    - status (Pedir/Não pedir) -> Status
+    - custo -> BigDecimal
+    - venda -> BigDecimal
+    - status -> Status
     - observacoes<> -> String
 
-Produto (abstract)
+Produto
     - categoria -> Categoria
-        (Pastilha, Disco, Cilindro, etc.)
     - código -> String
     - marca -> Marca
     - detalhes<> -> String
-        - (opcional, um campo com observações sobre algum detalhe do produto)
+        - opcional, um campo com observações sobre algum detalhe do produto
 
 Pastilha (É UM produto)
     - conversoes<> -> Conversao
-    - material - inicialmente, podem ser null
-    - comprimento - inicialmente, podem ser null
-    - altura - inicialmente, podem ser null
-    - espessura - inicialmente, podem ser null
-
-Disco (É UM produto)
+    - material -> Material ou String
+        - inicialmente, podem ser null [ENUM?]
+    - comprimento -> inicialmente, podem ser null
+    - altura -> inicialmente, podem ser null
+    - espessura -> inicialmente, podem ser null
 
 Marca [Enum]
     - ECOPADS
     - FRASLE
     - COBREQ
     - BLUE_FRICTION
-    - HIPPER_FREIOS
-    - FREMAX
-    - MAZZICAR
-    - FORTEC
-    - + 
 
 Categoria [Enum]
-    - DISCO
     - PASTILHA
-    - TAMBOR
-    - SAPATA
-    - CILINDRO_RODA
-    - CILINDRO_MESTRE
-    - +
 
-Conversao -> lembrar de resolver problema de associação no BD
-    - codigo - String
-    - marca - String
+Conversao
+    - codigo -> String
+    - marca -> String
     - aplicacoes<> -> Aplicacao
-    - similares<> - Conversao
-    - observacoes<> - String
+    - similares<> -> Conversao
+    - observacoes<> -> String
 
 Aplicacao
-    - montadora - String
+    - montadora -> String
         - Ex: Honda
-    - veículo - String
+    - veículo -> String
         - Ex: Civic
-    - ano[2] - Integer
-        - Ex: [0] 1990; [1] 1992
-        - [0] -> ano inicial
-        - [1] -> ano final (definir um padrão para quando for '<ano inicial> em diante')
-            - usar null?
-        - considerar esse modelo (vetor) ou usar atributos separadas
-        - (ou Date? Apenas o ano!)
-        - [ver nome melhor]
-    - detalhes - String
+    - anoInicial -> Integer
+    - anoFinal -> Integer
+    - lado -> Lado
+    - detalhes -> String
         - Ex: 1.6i 16V VTEC
         - Definir padrão
         - Considerar atributo 'motor'
 
-Status [Enum] - ver mais afundo as possibilidades com Enum
+Lado [Enum]
+    - DT
+    - TR
+    - LE
+    - LD
+    - DT_TR
+    - DT_LE
+    - DT_LD
+    - TR_LE
+    - TR_LD
+    - LE_LD
+
+Status [Enum]
     - PEDIR
     - NAO_PEDIR
+
+-=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-
+
+Movimentacao - achar um nome melhor
+    - tipo -> TipoMovimentacao
+    - data -> Date 
+        - ou outro tipo usado para datas
+    - parte -> String [cliente/fornecedor]
+        - versões futuras: dividir entre Cliente e Fornecedor, usar herança nesses casos, destacando a diferença em cada classe individualmente
+    - item<ItemMovimentacao> -> ItemMovimentacao
+    - total -> BigDecimal
+
+ItemMovimentacao
+    - quantidade -> Integer
+    - descrição -> String
+    - valorUnitário -> BigDecimal
+    - lado -> Lado
+        - Automatico para produtos do estoque
+    - subTotal -> BigDecimal
+
+ItemMovimentacaoVenda (EXTENDS ItemMovimentacao)
+    - produto -> Produto
+
+ItemMovimentacaoServico (EXTENDS ItemMovimentacao)
+    - servico -> String
+        - Qual o serviço que está sendo realizado, usinagens de disco de freio, de cilindros de roda, de pinça, etc.
+
+TipoMovimentacao [Enum]
+    - ENTRADA
+    - SAIDA

@@ -1,5 +1,52 @@
-- Cadastrar produto
-- Consultar produto
-    - consultar por código, marca e conversões (mais opções futuramente)
+- Cadastrar produto (manual & automatico)
+    Universal:
+        - Informar CÓDIGO, MARCA e CATEGORIA.
+        - Quantidade padrão será 0, qualquer valor a mais deverá ser informado/calculado através do registro de compra.
+        - O programa deve verificar se o produto já estava cadastrado ou não.
+    Manual:
+        - Acesso ao caso de uso "Editar produtos"
+            - Opcional, MAS o programa deverá destacar peças que não estão devidamente cadastradas
+            [Nota: considerar entre manter isso, ou obrigar o usuário a cadastrar a peça da forma correta desde o início]
+    Automático:
+        - Através dos registros de compras, programa deverá informar quando é uma peça nova E já cadastrar.
+        - O programa deverá realizar o calculo da quantidade de peças adicionadas.
+
 - Editar produtos
-- Registrar compras e vendas (semelhantes, detalhar mais depois)
+    - O programa deve permitir a alteração de TODOS os campos da classe "Produto"
+        - categoria [ENUM]
+        - codigo
+        - marca [ENUM]
+        - detalhes
+        - campus dos produtos especificos
+            - Ex: Pastilha
+                - conversoes
+                - material [ENUM?]
+                - comprimento
+                - altura
+                - espessura
+    - O programa também deve ser capaz de alterar os atributos da classe "Estoque", com EXCEÇÃO da quantidade
+        - status
+        - observacoes
+
+- Consultar produto
+    - Busca/Filtro dos campus CATEGORIA, CODIGO, MARCA e CONVERSOES
+        - A principal e mais importante forma de busca é a de CONVERSOES
+    - Permitir múltiplos filtros ativos, como por exemplo (mas não se limitando á):
+        - CATEGORIA = PASTILHA
+        - MARCA = COBREQ
+    - Busca por aplicacao (possivelmente ficará para outra versão)
+        - Montadora, veiculo e ano
+            - ano -> <ano inicial> <= <ano buscado> <= <ano final>
+
+- Registrar movimentação do estoque
+    - O usuário deve informar o tipo de operação.
+        - Tipo ENTRADA = mais produtos no estoque.
+        - Tipo SAIDA = menos produtos no estoque.
+    - Preencher os outros campus, com exceção do "total".
+        - O programa deve dar acesso ao caso de uso "Inserir item".
+        - O "total" deve ser calculado pelo próprio sistema, usando como base o "subTotal" de cada item inserido
+        - O "lado" será preenchido automaticamente para venda de peças, e manualmente para serviços
+
+- Registrar conversao
+- Atribuir conversao
+- Registrar aplicacao
